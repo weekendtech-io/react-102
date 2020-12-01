@@ -1,7 +1,16 @@
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import LikeButton from "./components/LikeButton";
+import ClickCounter from "./components/ClickCounter";
 
 function App() {
+  const [likeButtonClickCount, setLikeButtonClickCount] = useState(0);
+
+  const incrementClickCount = () => {
+    setLikeButtonClickCount(likeButtonClickCount + 1);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +18,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload the page.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <br />
+        <LikeButton incrementClickCount={incrementClickCount} />
+        <br />
+        <ClickCounter likeButtonClickCount={likeButtonClickCount} />
       </header>
     </div>
   );
